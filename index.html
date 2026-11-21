@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plastic Recycling Challenge</title>
+  <meta name="description" content="A density simulation for separating mixed plastics with liquids of different densities.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="lang-picker">
+        <label for="lang-select"><span aria-hidden="true">🌐</span><span class="sr-only">Language / Idioma / 语言</span></label>
+        <select id="lang-select">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+      <h1 data-i18n="title">The Plastic Recycling Challenge</h1>
+      <p class="mission" data-i18n="mission">A recycling center received a mix of five plastics. Use liquids of different densities to separate every plastic into its own tray.</p>
+      <p class="rule" data-i18n-html="ruleHtml"><strong>Remember:</strong> A solid <em>floats</em> if it is less dense than the liquid. It <em>sinks</em> if it is more dense than the liquid.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <details class="reference" open>
+      <summary data-i18n="refSummary">Reference tables (from your worksheet)</summary>
+      <div class="tables">
+        <table>
+          <caption data-i18n="plasticsCaption">The plastics</caption>
+          <thead><tr><th data-i18n="thPlastic">Plastic</th><th data-i18n="thProduct">Example product</th><th><span data-i18n="thDensity">Density</span> (g/cm³)</th></tr></thead>
+          <tbody id="plastic-table"></tbody>
+        </table>
+        <table>
+          <caption data-i18n="liquidsCaption">Your available liquids</caption>
+          <thead><tr><th data-i18n="thLiquid">Liquid</th><th><span data-i18n="thDensity">Density</span> (g/mL)</th></tr></thead>
+          <tbody id="liquid-table"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <section class="how">
+      <h2 class="sr-only" data-i18n="howTitle">How to use</h2>
+      <ol>
+        <li data-i18n-html="how1Html"><strong>Pick a tray</strong> of plastics.</li>
+        <li data-i18n-html="how2Html"><strong>Pick a liquid</strong> from the shelf.</li>
+        <li data-i18n-html="how3Html">Press <strong>Pour in</strong> and watch what floats and what sinks.</li>
+        <li data-i18n-html="how4Html"><strong>Collect</strong> the floaters and sinkers into new trays. Repeat until every tray has only one kind of plastic.</li>
+      </ol>
+    </section>
+
+    <div class="lab">
+      <section class="panel" aria-labelledby="trays-heading">
+        <h2 id="trays-heading"><span class="num">1</span> <span data-i18n="traysHeading">Trays</span></h2>
+        <div id="trays" class="trays"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="liquids-heading">
+        <h2 id="liquids-heading"><span class="num">2</span> <span data-i18n="liquidsHeading">Liquid shelf</span></h2>
+        <div id="liquids" class="liquids"></div>
+      </section>
+
+      <section class="panel station" aria-labelledby="station-heading">
+        <h2 id="station-heading"><span class="num">3</span> <span data-i18n="stationHeading">Test station</span></h2>
+        <p id="station-status" class="status" aria-live="polite"></p>
+        <div class="beaker-area">
+          <div id="beaker" class="beaker" aria-hidden="true">
+            <div class="liquid-fill" id="liquid-fill"></div>
+            <div id="pieces" class="pieces"></div>
+          </div>
+        </div>
+        <p id="result" class="result" aria-live="polite"></p>
+        <div class="actions">
+          <button id="pour-btn" class="btn primary" type="button" data-i18n="pour">Pour in</button>
+          <button id="collect-btn" class="btn primary" type="button" hidden>Collect into trays</button>
+          <button id="undo-btn" class="btn" type="button" data-i18n="undo">Undo last step</button>
+          <button id="reset-btn" class="btn" type="button" data-i18n="reset">Start over</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="win" class="win" hidden aria-live="polite"></div>
+
+  </main>
+
+  <script src="data.js"></script>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
